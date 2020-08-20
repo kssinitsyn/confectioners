@@ -52,8 +52,6 @@
 export default {
   name: 'Header'
 }
-
-console.log('header')
 </script>
 
 <style scoped>

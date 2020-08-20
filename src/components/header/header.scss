@@ -1,10 +1,14 @@
 .navbar {
     padding: 20px 15px;
 
-    //height: 100vh;
+    height: initial;
 
     background-color: #FFFFFF;
     box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
 .logo {
@@ -31,6 +35,10 @@
 #menu__toggle {
     opacity: 0;
 }
+#menu__toggle:checked ~ .navbar {
+    height: 100vh;
+}
+
 #menu__toggle:checked ~ .menu__btn > span {
     transform: rotate(45deg);
 }
@@ -45,9 +53,6 @@
 #menu__toggle:checked ~ .menu__box {
     visibility: visible;
     left: 0;
-}
-#menu__toggle:checked ~ .navbar {
-    height: 100vh;
 }
 
 .menu__btn {
@@ -101,10 +106,8 @@
 
     list-style: none;
 
-    //background-color: #FFFFFF;
-    //box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
-
     transition-duration: .25s;
+    background-color: #FFFFFF;
 }
 
 .menu__list {
@@ -132,18 +135,27 @@
     display: none;
 }
 
-.menu__login > .menu__item {
+.menu__login .menu__item {
     font-size: 14px;
     font-weight: bold;
+
+    margin-bottom: 10px;
 }
 
 .menu__login li:nth-child(1){
-    margin-right: 25px;
+    margin-right: 0;
 }
 
 .menu__rules > .menu__item {
     font-size: 14px;
     padding: 5px 24px;
+    //margin-bottom: 10px;
+}
+
+.menu__rules_mobile .menu__item {
+    font-size: 14px;
+    //padding: 5px 24px;
+    margin-bottom: 10px;
 }
 
 .menu__item {
@@ -158,6 +170,8 @@
     text-align: center;
 
     transition-duration: .25s;
+
+    margin-bottom: 25px;
 }
 
 @media screen and (min-width: 1169px){
@@ -218,13 +232,14 @@
         margin: 0;
         display: flex;
 
-        align-items: center;
+        //align-items: center;
 
     }
 
     .menu__list .menu__item {
         margin-right: 59px;
         position: relative;
+        margin-bottom: 0;
     }
 
     .menu__list .menu__item:after {
@@ -255,11 +270,17 @@
         height: initial;
         margin: 0;
         display: flex;
-        align-items: center;
+        //align-items: center;
     }
     .menu__login .menu__item{
         font-size: 12px;
         font-weight: 600;
+
+        //margin-bottom: 0;
+    }
+
+    .menu__login li:nth-child(1){
+        margin-right: 25px;
     }
 
     .menu__rules_mobile {
@@ -274,6 +295,7 @@
     }
     .menu__rules_desktop .menu__item{
         font-size: 14px;
+        margin-bottom: 0;
     }
 
     .menu__rules_desktop-wrap {

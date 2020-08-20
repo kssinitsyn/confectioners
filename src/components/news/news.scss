@@ -1,0 +1,153 @@
+.news {
+  &__content {
+    max-width: 1170px;
+    margin: 80px auto 0;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 39px;
+    color: #000000;
+    text-transform: uppercase;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__allnews {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    color: #000000;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  &__more {
+    margin-top: 50px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    text-transform: uppercase;
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    align-self: center;
+  }
+
+  &__grid {
+    margin-top: 30px;
+    max-width: 1170px;
+
+    display: grid;
+    grid-template-columns: 570px 570px;
+    grid-template-rows: 300px 300px;
+    grid-gap: 30px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+
+    max-width: 1170px;
+
+    position: relative;
+
+    &:after {
+      content: attr(data-content);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      background-color: rgba(0,0,0, 0.56);
+
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      font-size: 161px;
+      line-height: 196px;
+      color: #F7F7F7;
+      opacity: 0.6;
+
+    }
+
+    &:nth-child(3n) {
+      grid-column: 1/4;
+      max-height: 300px;
+    }
+
+    &-src {
+      height: 100%;
+      width: 100%;
+
+      object-fit: cover;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1169px) {
+  .news {
+    &__title {
+      font-size: 22px;
+    }
+
+    &__content {
+      max-width: 100%;
+      margin-top: 30px;
+      padding:  0 15px;
+    }
+    &__grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: max-content;
+    }
+
+    &__allnews {
+      display: none;
+    }
+
+    &__header {
+      justify-content: center;
+    }
+
+    &__img {
+      &:nth-child(2) {
+        grid-row: 1;
+        grid-column: 1;
+      }
+      &:nth-child(3n) {
+        grid-column: 1;
+        max-height: initial;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 465px)  {
+  .news {
+    &__img {
+      &:after {
+        font-size: 95px;
+      }
+    }
+  }
+}
