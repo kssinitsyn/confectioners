@@ -1,11 +1,11 @@
 <template>
   <div class="news__content">
     <div class="news__header">
-      <h2 class="news__title">Новости</h2>
+      <a class="news__title" href="#">Новости</a>
       <a href="" class="news__allnews">Все новости</a>
     </div>
     <div class="news__grid">
-      <div class="news__img" v-for="item in items" :key="item.id">
+      <div class="news__img" v-for="(item, index) in items" :key="item.id" :data-content="index + 1" >
         <img class="news__img-src" :src = item.image alt="">
       </div>
     </div>
@@ -27,9 +27,9 @@ export default {
   },
   methods: {
     loadMore: function () {
-      this.items.push({ image: require('@/assets/img_1.jpg') })
-      this.items.push({ image: require('@/assets/img_2.jpg') })
-      this.items.push({ image: require('@/assets/img_3.jpg') })
+      this.items.push({ image: require('@/assets/img_1.jpg'), id: 4 })
+      this.items.push({ image: require('@/assets/img_2.jpg'), id: 5 })
+      this.items.push({ image: require('@/assets/img_3.jpg'), id: 6 })
     }
   },
   mounted () {

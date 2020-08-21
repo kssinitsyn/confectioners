@@ -109,6 +109,15 @@
     color: #000000;
 
     margin-bottom: 10px;
+
+    &_invalid {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      color: #000000;
+      color: #E76400;
+    }
   }
 
   &__bottom   {
@@ -184,6 +193,10 @@
 
     &:focus::placeholder {
       opacity: 0;
+    }
+
+    &.invalid {
+      border: 1px solid #E76400;
     }
   }
 

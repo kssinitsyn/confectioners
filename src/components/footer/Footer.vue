@@ -78,10 +78,18 @@
               </div>
             </div>
             <div class="footer__subscribe">
-              <p class="footer__subscribe-title">Подписка на новости</p>
+<!--              <p class="footer__subscribe-title">Подписка на новости</p>-->
+              <label class="footer__subscribe-title_invalid" v-if="!$v.email.required">Заполните поле</label>
+              <label class="footer__subscribe-title_invalid" v-else-if="!$v.email.email">Введите корректный Email</label>
+              <label class="footer__subscribe-title" v-else-if="$v.email.email">Подписка на новости</label>
+              <label class="footer__subscribe-title" v-else-if="$v.email.email.dirty && $v.email.email">Подписка на новости</label>
               <form action="#">
-                <input class="footer__input" type="text" placeholder="example@mail.com" required>
-                <button class="footer__submit">Ok</button>
+                <input class="footer__input"
+                       type="text"
+                       placeholder="example@mail.com"
+                       v-model="email"
+                       :class="{invalid: (!$v.email.required) || (!$v.email.email) }">
+                <button class="footer__submit" @click="checkForm">Ok</button>
               </form>
             </div>
           </div>
@@ -105,8 +113,34 @@
 </template>
 
 <script>
+import { email, required } from 'vuelidate/lib/validators'
+
 export default {
-  name: 'Footer'
+  name: 'Footer',
+  data: function () {
+    return {
+      email: null
+    }
+  },
+  validations: {
+    email: {
+      required,
+      email
+    }
+  },
+  methods: {
+    checkForm: function (e) {
+      if (this.$v.$invalid) {
+        this.$v.$touch()
+      } else {
+        console.log('submit')
+        this.success = true
+        console.log(this.success)
+      }
+
+      e.preventDefault()
+    }
+  }
 }
 </script>
 
